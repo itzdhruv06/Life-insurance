@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
@@ -15,7 +16,6 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     if (!isDarkMode) {
@@ -27,7 +27,6 @@ const Navbar = () => {
     }
   };
 
-  // On initial load
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
@@ -37,32 +36,34 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-700 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-lg">
+    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-2xl backdrop-blur-md transition-all duration-300">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
-          <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
-          <span className="text-white text-2xl font-bold">LifeSecure</span>
+          <img src={logo} alt="Logo" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+          <span className="text-white text-2xl font-bold tracking-wide">
+            Life<span className="text-yellow-300">Secure</span>
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-10">
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
-              className={`text-white relative font-medium hover:text-yellow-300 transition ${
+              className={`relative text-white font-semibold transition-all duration-200 hover:text-yellow-300 ${
                 location.pathname === item.path ? "text-yellow-300" : ""
               }`}
             >
-              <span className="hover:border-b-2 border-yellow-300 pb-1">
+              <span className="pb-1 hover:underline underline-offset-4">
                 {item.name}
               </span>
             </Link>
           ))}
         </nav>
 
-        {/* Toggle & Menu */}
+        {/* Toggle Buttons */}
         <div className="flex items-center space-x-4">
           {/* Dark Mode Toggle */}
           <button
@@ -73,7 +74,7 @@ const Navbar = () => {
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
 
-          {/* Mobile Menu Icon */}
+          {/* Hamburger Icon */}
           <div
             className="md:hidden text-white text-2xl cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -83,23 +84,31 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-gradient-to-b from-blue-700 via-purple-600 to-indigo-700 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-6 py-4 space-y-4 transition-all duration-300">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              onClick={() => setMenuOpen(false)}
-              className={`block text-white text-lg font-medium hover:text-yellow-300 ${
-                location.pathname === item.path ? "text-yellow-300" : ""
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* Animated Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden px-6 py-4 space-y-4 bg-gradient-to-b from-blue-600 via-indigo-700 to-purple-700 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setMenuOpen(false)}
+                className={`block text-white text-lg font-semibold hover:text-yellow-300 ${
+                  location.pathname === item.path ? "text-yellow-300" : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

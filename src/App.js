@@ -1,19 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Plans from "./pages/plans";
+import Contact from "./pages/contact";
 
-import Navbar from './components/navbar';
-import Footer from './components/footer';
-import Home from "./components/home";
-import About from "./components/about";
-import Plans from "./components/plans";
-import Contact from "./components/contact";
-
-const App = () => {
+function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen flex flex-col">
+      <Router>
         <Navbar />
-
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,11 +20,10 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-
         <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
-};
+}
 
 export default App;

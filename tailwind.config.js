@@ -4,17 +4,23 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  animation: {
-  fadeIn: "fadeIn 2s ease-in-out forwards",
-},
-keyframes: {
-  fadeIn: {
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-  },
-},
   theme: {
-    extend: {},
+  extend: {
+    animation: {
+      fadeIn: 'fadeIn 1.2s ease-in-out',
+      slideUp: 'slideUp 1.2s ease-in-out',
+    },
+    keyframes: {
+      fadeIn: {
+        '0%': { opacity: 0 },
+        '100%': { opacity: 1 },
+      },
+      slideUp: {
+        '0%': { opacity: 0, transform: 'translateY(20px)' },
+        '100%': { opacity: 1, transform: 'translateY(0)' },
+      },
+    },
   },
+},
   plugins: [],
 }
