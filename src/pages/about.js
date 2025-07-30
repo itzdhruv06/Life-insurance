@@ -101,44 +101,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Meet Our Experts */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 text-center transition duration-500">
-        <h2 className="text-4xl font-bold text-blue-700 dark:text-yellow-400 mb-12">Meet Our Experts</h2>
-        <div className="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
-          {[
-            {
-              name: "Anjali Sharma",
-              role: "Senior Advisor",
-              img: "https://randomuser.me/api/portraits/women/68.jpg",
-            },
-            {
-              name: "Rahul Verma",
-              role: "Insurance Analyst",
-              img: "https://randomuser.me/api/portraits/men/52.jpg",
-            },
-            {
-              name: "Priya Menon",
-              role: "Claims Specialist",
-              img: "https://randomuser.me/api/portraits/women/44.jpg",
-            },
-          ].map((expert, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
-            >
-              <img
-                src={expert.img}
-                alt={expert.name}
-                className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-blue-500 dark:border-yellow-300"
-              />
-              <h4 className="text-xl font-semibold text-blue-800 dark:text-yellow-300">{expert.name}</h4>
-              <p className="text-sm text-gray-500 dark:text-gray-200">{expert.role}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* Testimonials */}
       <section className="py-20 px-6 bg-blue-50 dark:bg-gray-800 text-center transition duration-500">
         <h2 className="text-4xl font-bold text-blue-700 dark:text-yellow-400 mb-10">

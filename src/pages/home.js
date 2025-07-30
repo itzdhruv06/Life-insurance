@@ -1,15 +1,19 @@
 import React from "react";
-import { motion } from "framer-motion";
 import heroImage from "../assets/insurance-producer.jpg";
 import familyImg from "../assets/family.jpg";
 import supportImg from "../assets/support.jpg";
 import coverageImg from "../assets/coverage.jpg";
-import mobileAppImg from "../assets/mobile-app.jpg";
+import { motion } from "framer-motion";
+
+const stats = [
+  { value: "50K+", label: "Policies Issued" },
+  { value: "98%", label: "Claim Settlement Ratio" },
+  { value: "24/7", label: "Customer Support" },
+];
 
 const Home = () => {
   return (
     <div className="mt-20 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
-      
       {/* Hero Section */}
       <section className="bg-gray-100 dark:bg-gray-900">
         <motion.div
@@ -20,7 +24,7 @@ const Home = () => {
           <img
             src={heroImage}
             alt="Life Insurance Hero"
-            className="w-full h-[85vh] object-cover shadow-lg"
+            className="w-full h-[85vh] object-cover"
           />
         </motion.div>
 
@@ -34,7 +38,7 @@ const Home = () => {
             Secure Your Life. Protect Their Future.
           </h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-            We provide trusted life insurance solutions designed to keep your loved ones protected through every phase of life.
+            Trusted life insurance solutions designed to keep your loved ones protected through every phase of life.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -55,7 +59,7 @@ const Home = () => {
             Our mission is to offer reliable, affordable life insurance plans with a customer-first approach.
           </p>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
+            {[ 
               {
                 img: coverageImg,
                 title: "Tailored Coverage",
@@ -94,6 +98,29 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="bg-white dark:bg-gray-800 py-16 transition-colors duration-500">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-blue-800 dark:text-yellow-400 mb-10">
+            Our Impact at a Glance
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="bg-blue-50 dark:bg-blue-900 p-6 rounded-xl shadow-md hover:shadow-lg transition"
+                whileHover={{ scale: 1.05 }}
+              >
+                <h3 className="text-4xl font-extrabold text-blue-700 dark:text-yellow-300">
+                  {stat.value}
+                </h3>
+                <p className="mt-2 text-gray-700 dark:text-gray-200">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
         <div className="max-w-5xl mx-auto px-4 text-center">
@@ -124,35 +151,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Mobile App Promotion */}
-      <section className="py-16 bg-blue-50 dark:bg-blue-950 transition-colors duration-500">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 px-4 items-center">
-          <motion.img
-            src={mobileAppImg}
-            alt="Mobile App"
-            className="rounded-xl w-full shadow-md"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-          />
-          <div>
-            <h2 className="text-3xl font-bold text-blue-800 dark:text-yellow-400 mb-4">
-              Manage Policies On the Go
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
-              With the LifeSecure mobile app, you can check policy status, update beneficiaries, make payments, and connect with advisors all from your phone.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold px-6 py-3 rounded-lg shadow-md"
-            >
-              Download App
-            </motion.button>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
+      {/* CTA Section */}
       <section className="bg-blue-700 dark:bg-yellow-500 text-white dark:text-blue-900 py-16 text-center transition-colors duration-500">
         <h2 className="text-3xl font-bold mb-4">Your Future Starts Now</h2>
         <p className="text-lg mb-6">Protect your family with confidence. Start with a free quote today.</p>
