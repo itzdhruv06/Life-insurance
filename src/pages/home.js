@@ -1,8 +1,8 @@
 import React from "react";
-import heroImage from "../assets/insurance-producer.jpg";
-import familyImg from "../assets/family.jpg";
-import supportImg from "../assets/support.jpg";
-import coverageImg from "../assets/coverage.jpg";
+import heroImage from "../assets/insurance-producer.webp";
+import familyImg from "../assets/family.webp";
+import supportImg from "../assets/support.webp";
+import coverageImg from "../assets/coverage.webp";
 import { motion } from "framer-motion";
 
 const stats = [

@@ -6,8 +6,8 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
-import logo from "../assets/life-secure-logo.png";
-import iso from "../assets/iso-certified.png";
+import logo from "../assets/life-secure-logo.webp";
+import iso from "../assets/iso-certified.webp";
 
 const Footer = () => {
   return (

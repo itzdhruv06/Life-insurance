@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import termImg from "../assets/term-life.jpg";
-import wholeImg from "../assets/whole-life.jpg";
-import childImg from "../assets/child-protection.jpg";
-import missionImg from "../assets/mission.jpg";
-import visionImg from "../assets/vision.jpg";
+import termImg from "../assets/term-life.webp";
+import wholeImg from "../assets/whole-life.webp";
+import childImg from "../assets/child-protection.webp";
+import missionImg from "../assets/mission.webp";
+import visionImg from "../assets/vision.webp";
 
 const About = () => {
   return (

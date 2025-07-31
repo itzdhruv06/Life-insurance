@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import termImg from "../assets/term.jpg";
-import wholeImg from "../assets/whole.jpg";
-import endowmentImg from "../assets/endowment.jpg";
-import ulipImg from "../assets/ulip.jpg";
+import termImg from "../assets/term.webp";
+import wholeImg from "../assets/whole.webp";
+import endowmentImg from "../assets/endowment.webp";
+import ulipImg from "../assets/ulip.webp";
 
 const plans = [
   {
-    title: "Term Insurance",
+    title: "Term Life Insurance",
     img: termImg,
     description:
       "Affordable, fixed-term life coverage that provides financial protection for your family in case of untimely death.",
